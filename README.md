@@ -78,7 +78,7 @@
 ```
 
 ### 3. 接受邀请
-** HTTP POST**: `{{URL}}/refer?player=0xf04E1F8FEF444AB33EbceBd5Ef32e17ff2ef4150&code=879e9bf6`
+**HTTP POST**: `{{URL}}/refer?player=0xf04E1F8FEF444AB33EbceBd5Ef32e17ff2ef4150&code=879e9bf6`
 * 参数 player: 新用户的地址
 * 参数 code: 邀请人的邀请码
 
