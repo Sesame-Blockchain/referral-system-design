@@ -96,7 +96,17 @@
 ```javascript
 {
     "referrer": "0xD4f821695cfb105822Ec1e1F111C7f863E939BEf", // 邀请码主人的地址
+    "credit": 0,
     "msg": "Refer successful"
+}
+```
+
+邀请码无效 **[STATUS CODE 404]**
+```javascript
+{
+    "referrer": "0x0000000000000000000000000000000000000000",
+    "credit": 0,
+    "msg": "Invalid code"
 }
 ```
 
