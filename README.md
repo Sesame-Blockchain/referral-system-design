@@ -7,12 +7,11 @@
 
 
 ### 1. 查询状态
-通过API查询用户是否可以生成邀请码：
 **HTTP GET**: `{{URL}}/refer/status?player=0x063fEE1bF351b05C264d4234ea993A22A18D6081`
 * 参数 player: 用户钱包地址
 
 返回值：
-不满足要求的用户。**[STATUS CODE 400]**
+通过API查询用户是否可以生成邀请码。不满足要求的用户。**[STATUS CODE 400]**
 ```javascript
 {
     "canRefer": false, // 不可以生成邀请码
@@ -20,7 +19,7 @@
 }
 ```
 
-满足要求的用户：**[STATUS CODE 200]**
+满足要求的用户，可以发起POST request生成邀请码。见端口2。**[STATUS CODE 200]**
 ```javascript
 {
     "canRefer": true, // 可以生成邀请码
@@ -54,7 +53,6 @@
 ```
 
 ### 2. 生成邀请码
-如果可以生成邀请码，则像后端发送GET生成邀请码。
 **HTTP GET**: `{{URL}}/refer/code?player=0xD4f821695cfb105822Ec1e1F111C7f863E939BEf`
 * 参数 player: 用户钱包地址
 
