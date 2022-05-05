@@ -20,29 +20,32 @@
 }
 ```
 
-满足要求的用户，可以发起GET request生成邀请码。见端口2。**[STATUS CODE 200]**
+满足要求的用户，则返回邀请码。**[STATUS CODE 200]**
 ```javascript
 {
-    "canRefer": true, // 可以生成邀请码
-    "credit": 19550   // 用户当前消费总额
+    "stats": [],
+    "totalCredit": "0.0",
+    "totalClaimed": "0.0",
+    "credit": 579, // 用户当前消费总额
+    "code": ""     // 邀请码
 }
 ```
 
-已经生成邀请码的用户，返回已接受邀请的下线用户，以及可以领取的分红：**[STATUS CODE 200]**
+已有分红数据的用户，则返回下线人，下线人消费额，总分红数额，已领取的分红数额
 ```javascript
 {
     "stats": [
         {
             "address": "0x1Ac17e74df2e06FBeFF81a86565d7bd528044bE9",
-            "spent": "38"
+            "spent": "38" // 消费额
         },
         {
             "address": "0xd164A3a6dc30a8fd816AD28CB6F8F57Aac201473",
-            "spent": "0"
+            "spent": "0" // 消费额
         },
         {
             "address": "0xA2F3254855977Be1f1A43DF8556CC9A04FF853f9",
-            "spent": "0"
+            "spent": "0" // 消费额
         }
     ],
     "totalCredit": "0.33333", // 邀请人总分红数额
@@ -53,31 +56,7 @@
 
 ```
 
-### 2. 生成邀请码
-**HTTP GET**: `{{URL}}/refer/code?player=0xD4f821695cfb105822Ec1e1F111C7f863E939BEf`
-* 参数 player: 用户钱包地址
-
-返回值：
-
-不满足要求的用户。**[STATUS CODE 400]**
-```javascript
-{
-    "code": "",
-    "credit": 19,
-    "msg": "Insufficient credit"
-}
-```
-
-满足要求的用户，成功获得邀请码。**[STATUS CODE 200]**
-```javascript
-{
-    "code": "879e9bf6",
-    "credit": 3120,
-    "msg": "Valid refer code"
-}
-```
-
-### 3. 接受邀请
+### 2. 接受邀请
 **HTTP POST**: `{{URL}}/refer?player=0xf04E1F8FEF444AB33EbceBd5Ef32e17ff2ef4150&code=879e9bf6`
 * 参数 player: 新用户的地址
 * 参数 code: 邀请人的邀请码
@@ -118,7 +97,7 @@
 }
 ```
 
-### 邀请人领取分红
+### 3. 邀请人领取分红
 **HTTP POST**: {{URL}}/refer/reward/claim?player=0xD4f821695cfb105822Ec1e1F111C7f863E939BEf
 * 参数 player: 邀请人的地址
 
