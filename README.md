@@ -11,6 +11,7 @@
 * 参数 player: 用户钱包地址
 
 返回值：
+
 通过API查询用户是否可以生成邀请码。不满足要求的用户。**[STATUS CODE 400]**
 ```javascript
 {
@@ -19,7 +20,7 @@
 }
 ```
 
-满足要求的用户，可以发起POST request生成邀请码。见端口2。**[STATUS CODE 200]**
+满足要求的用户，可以发起GET request生成邀请码。见端口2。**[STATUS CODE 200]**
 ```javascript
 {
     "canRefer": true, // 可以生成邀请码
@@ -57,6 +58,7 @@
 * 参数 player: 用户钱包地址
 
 返回值：
+
 不满足要求的用户。**[STATUS CODE 400]**
 ```javascript
 {
@@ -81,6 +83,7 @@
 * 参数 code: 邀请人的邀请码
 
 返回值：
+
 如果用户不是新用户，不能建立邀请关系 **[STATUS CODE 400]**
 ```javascript 
 {
